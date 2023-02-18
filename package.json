@@ -17,7 +17,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && node ./build/app.js"
+    "start": "npx tsc && node ./build/app.js",
+    "build": "tsc -p ."
   },
   "author": "",
   "license": "ISC",
