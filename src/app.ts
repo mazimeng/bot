@@ -20,7 +20,7 @@ const PORT: number = 3001;
 const app: Application = express();
 const router = express.Router()
 const chatgptApi = new ChatGPTAPI({
-    apiKey: "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"
+    apiKey: process.env.OPENAI_API_KEY as string
 })
 
 app.use(express.json());
