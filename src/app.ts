@@ -16,6 +16,7 @@ interface ResponseMessage {
 }
 
 const PORT: number = 3001;
+const MAX_INCOMING_TEXT = 256;
 
 const app: Application = express();
 const router = express.Router()
@@ -29,6 +30,13 @@ app.use(bodyParser.json());
 
 router.post("/messages", (req, res) => {
     const requestMessage = req.body as RequestMessage;
+    if (requestMessage.text.length > MAX_INCOMING_TEXT) {
+        res.status(400).send({
+            text: "消息内容超限",
+            code: 1
+        })
+    }
+
     if (!requestMessage.conversationId) {
         chatgptApi.sendMessage(requestMessage.text).then(openaiRes => {
             let reply: ResponseMessage = {
