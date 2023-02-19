@@ -77,7 +77,7 @@ router.post("/messages", (req, res) => {
     }
 })
 
-app.use('/api', router)
+app.use('/gpt3/api', router)
 
 app.listen(PORT, (): void => {
     console.log('SERVER IS UP ON PORT:', PORT);
